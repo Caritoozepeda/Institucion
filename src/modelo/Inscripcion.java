@@ -23,6 +23,12 @@ public class Inscripcion {
         this.nota = nota;
     }
 
+    public Inscripcion(Alumno alumno, Materia materia, double nota) {
+        this.alumno = alumno;
+        this.materia = materia;
+        this.nota = nota;
+    }
+
    
 
     public Inscripcion() {
@@ -58,6 +64,11 @@ public class Inscripcion {
 
     public void setNota(double nota) {
         this.nota = nota;
+    }
+
+    @Override
+    public String toString() {
+        return id_inscripcion+"- "+alumno.getApellido()+"-" + materia.getNombre();
     }
 
    

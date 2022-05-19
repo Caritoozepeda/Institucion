@@ -62,23 +62,38 @@ public class AlumnoData {
 
     }
 
-    public void eliminarAlumno(Alumno alumno) {
+    public void eliminarAlumno(int id) {
+        //cambiar de estado de activo a inactivo
 
-    }
-
-    public void modificarAlumno(Alumno alumno) {
-
-        sql = "UPDATE alumno SET apellido=?, nombre=?, fechaNac=?, activo=? WHERE id_alumno=?";
+        sql = "UPDATE alumno SET activo =0 WHERE id_alumno=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
+            // ps.setBoolean(1, false);
+            ps.setInt(4, id);
+            ps.executeUpdate();
+
+            ps.close();
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, " No se pudo elimiar el alumno");
+        }
+
+    }
+
+    public void modificarAlumno(int id) {
+        Alumno alumno = null;
+        sql = "UPDATE alumno SET apellido=?, nombre=?, fechaNac=? WHERE id_alumno=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            alumno = new Alumno();
             ps.setString(1, alumno.getApellido());
             ps.setString(2, alumno.getNombre());
             ps.setDate(3, Date.valueOf(alumno.getFechaNac()));
-            ps.setBoolean(4, alumno.isActivo());
             ps.setInt(4, alumno.getId_alumno());
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, " Se modifico el alumno.");
+
             ps.close();
 
         } catch (SQLException e) {
@@ -89,16 +104,17 @@ public class AlumnoData {
     }
 
     public Alumno buscarAlumno(int id) {
+
         Alumno alumno = null;
         try {
 
-            sql = "SELECT * FROM alumno WHERE id_alumno=?";
+            sql = "SELECT * FROM alumno WHERE id_alumno=? AND activo= 1";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id); // seteo Id para buscar en DB
 
             ResultSet rs = ps.executeQuery(); // trae los datos del alumno
             if (rs.next()) {
-                   alumno = new Alumno();
+                alumno = new Alumno();
                 alumno.setId_alumno(rs.getInt(1));
                 alumno.setApellido(rs.getString(2));
                 alumno.setNombre(rs.getString(3));
@@ -115,11 +131,11 @@ public class AlumnoData {
 
     }
 
-    public List listarAlumnos() {
-// declarar Array para guardar los alumnos
+    public List<Alumno> listarAlumnos() {
+
         List<Alumno> alumnos = new ArrayList<>();
         try {
-            sql = "SELECT * FROM alumno";
+            sql = "SELECT * FROM alumno WHERE activo= 1";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -139,6 +155,23 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
         }
         return alumnos;
+    }
+
+    public void activarAlumno(int id) {
+        sql = "UPDATE alumno SET activo =1 WHERE id_alumno=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            ps.close();
+
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, " No se puedo activar el alumno");
+        }
+
     }
 
 }

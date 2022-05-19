@@ -8,13 +8,16 @@ package institucion;
 import controlador.*;
 import java.time.LocalDate;
 import modelo.*;
+import modelo.Alumno;
+import modelo.Conexion;
+import modelo.Materia;
 
 /**
  *
  * @author Caro_Z
  */
 public class Institucion {
-    private static Conexion con;
+    private static Conexion conexion;
     private static AlumnoData ad;
     private static MateriaData md;
     /**
@@ -24,26 +27,44 @@ public class Institucion {
     public static void main(String[] args) {
         // TODO code application logic here
         
-       con = new Conexion();
-        ad = new AlumnoData(con);
-        Alumno a= new Alumno("Sosa","Juan",LocalDate.of(1980, 8, 23),true);
-        Alumno a2= new Alumno("Pepe","Jose",LocalDate.of(1990, 9, 01),true);
-        ad.agregarAlumno(a);
-        ad.agregarAlumno(a2);
-        System.out.println(" "+ ad.buscarAlumno(1));
-        System.out.println(" "+ ad.listarAlumnos());
+       conexion = new Conexion();
+        ad = new AlumnoData(conexion);
+        Alumno a= new Alumno(1,"Sosa","Juan",LocalDate.of(1980, 8, 23),true);
+        Alumno a2= new Alumno(2,"Pepe","Jose",LocalDate.of(1990, 9, 01),true);
+//        ad.agregarAlumno(a);
+//        ad.agregarAlumno(a2);
+//        System.out.println(" "+ ad.buscarAlumno(1));
+//        System.out.println(" "+ ad.listarAlumnos());
+//        
+        md= new MateriaData(conexion);
         
-        md= new MateriaData(con);
+        Materia m= new Materia(1,"Matematicas",2,true);
+        Materia m1= new Materia(2,"Algoritmos",1,true);
         
-        Materia m= new Materia("Matematicas",2,true);
-        Materia m1= new Materia("Algoritmos",1,true);
+//        md.agregarMateria(m);
+//        md.agregarMateria(m1);
         
-        md.agregarMateria(m);
-        md.agregarMateria(m1);
-        
-        System.out.println(" "+ m);
-        System.out.println(" "+ md.listarMaterias());
-        
+//        System.out.println(" "+ m);
+//        System.out.println(" "+ md.listarMaterias());
+      
+        Inscripcion in= new Inscripcion(a2, m1,7.7);
+        InscripcionData id= new InscripcionData(conexion);
+               // ok id.inscribir(in);
+         // ok   System.out.println(" "+ ad.buscarAlumno(4)); 
+      // ok  System.out.println("" + md.buscarMateria(4));
+       // ok System.out.println("materias"+ md.listarMaterias());
+      
+       
+    // ok System.out.println(" materias inscrp id 7 " + id.obtenerInscripcionesPorAlumno(7));
+  // ok System.out.println("" + id.listarAlumnosNoInscriptos(8));
+   // ok  id.registrarNota(8, 1, 1);
+     //ok    System.out.print(""+id.listarAlumnosInscriptos(7) ) ;
+  // Ok      System.out.println("q"+ id.listarAlumnosPorMateria(8));
+    // ok   id.eliminarInscripcion(1,1);
+       // ok  System.out.println(""+ id.listarMateriasPorAlumno(7));
+      //ok  System.out.println("" +id.listarMateriasNoInscriptas(2)); 
+       // OK System.out.println(" "+  id.listarInscripciones());
+    // ok    System.out.println("" +id.listarMateriasInscriptas(7) ); 
     }
     
 }
