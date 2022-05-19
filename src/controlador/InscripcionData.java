@@ -333,6 +333,39 @@ public class InscripcionData {
         
         
     }
+    public float notaAltaMateria(int idM) throws SQLException {
+        
+        String sql = "SELECT MAX(nota),materia.nombre,alumno.apellido,alumno.nombre FROM inscripcion ,alumno ,materia WHERE materia.nombre LIKE materia = ?;";
+        int nota;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idM);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            nota=rs.getInt("nota");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion.");
+        }
+        return 0;
+    }
+    
+    public float notaBajaMateria(int idM) throws SQLException {
+        
+        String sql = "SELECT MIN(nota),materia.nombre,alumno.apellido,alumno.nombre FROM inscripcion ,alumno ,materia WHERE materia.nombre LIKE materia = ?;";
+        int nota;
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idM);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            nota=rs.getInt("nota");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de conexion.");
+        }
+        return 0;
+    }
     
      public Alumno buscarAlumno(int id){
     
