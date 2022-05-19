@@ -6,6 +6,7 @@
 package institucion;
 
 import controlador.*;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import modelo.*;
 import modelo.Alumno;
@@ -24,7 +25,7 @@ public class Institucion {
      * 
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         // TODO code application logic here
         
        conexion = new Conexion();
@@ -65,6 +66,7 @@ public class Institucion {
       //ok  System.out.println("" +id.listarMateriasNoInscriptas(2)); 
        // OK System.out.println(" "+  id.listarInscripciones());
     // ok    System.out.println("" +id.listarMateriasInscriptas(7) ); 
+        System.out.println("" + id.notaAltaMateria(1));
     }
     
 }
