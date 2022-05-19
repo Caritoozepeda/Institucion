@@ -173,7 +173,7 @@ public class InscripcionData {
        
     }  
     //ok    
-      public List<Inscripcion> listarAlumnosInscriptos (int id_alumno){
+    public List<Inscripcion> listarAlumnosInscriptos (int id_alumno){
         List<Inscripcion> inscripciones= new ArrayList<>();
              Inscripcion ins;
              Alumno a;
@@ -271,7 +271,7 @@ public class InscripcionData {
     }
     
      //ok
-        public List<Materia> listarMateriasNoInscriptas(int id_alumno){
+    public List<Materia> listarMateriasNoInscriptas(int id_alumno){
             List<Materia> materias = new ArrayList<>();
              Materia materia;
         sql = "SELECT * FROM materia WHERE id_materia NOT IN (SELECT materia.id_materia FROM inscripcion, alumno, materia WHERE inscripcion.id_alumno = alumno.id_alumno AND inscripcion.id_materia = materia.id_materia AND materia.activo = 1 AND inscripcion.id_alumno = ?)";

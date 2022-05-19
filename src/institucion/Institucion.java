@@ -7,6 +7,7 @@ package institucion;
 
 import controlador.*;
 import java.time.LocalDate;
+import java.util.List;
 import modelo.*;
 import modelo.Alumno;
 import modelo.Conexion;
@@ -50,9 +51,19 @@ public class Institucion {
         Inscripcion in= new Inscripcion(a2, m1,7.7);
         InscripcionData id= new InscripcionData(conexion);
                // ok id.inscribir(in);
+               
+             
          // ok   System.out.println(" "+ ad.buscarAlumno(4)); 
       // ok  System.out.println("" + md.buscarMateria(4));
-       // ok System.out.println("materias"+ md.listarMaterias());
+       // ok
+          List<Materia> mat= md.listarMaterias();
+          for(Materia p: mat){
+           System.out.println(p.getId_materia()); 
+              System.out.println(p.getNombre());
+              System.out.println(p.getAnio());
+           
+          }
+       
       
        
     // ok System.out.println(" materias inscrp id 7 " + id.obtenerInscripcionesPorAlumno(7));
