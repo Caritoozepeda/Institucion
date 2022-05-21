@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modelo.Alumno;
 import modelo.Conexion;
+import java.time.LocalDate;
 
 /**
  *
@@ -32,7 +33,7 @@ public class AlumnoData {
 
         con = conexion.getConexion();
     }
-
+    // ok
     public void agregarAlumno(Alumno alumno) {
         try {
             sql = "INSERT INTO alumno(apellido, nombre, fechaNac, activo) VALUES (?, ?, ?, ?)";
@@ -61,48 +62,47 @@ public class AlumnoData {
         }
 
     }
-
+ // ok
     public void eliminarAlumno(int id) {
         //cambiar de estado de activo a inactivo
 
-        sql = "UPDATE alumno SET activo =0 WHERE id_alumno=?";
+        sql = "UPDATE alumno SET activo = 0 WHERE id_alumno = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
-            // ps.setBoolean(1, false);
-            ps.setInt(4, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
 
             ps.close();
-
+            JOptionPane.showMessageDialog(null, " Se eliminó el alumno");
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, " No se pudo elimiar el alumno");
         }
 
     }
-
-    public void modificarAlumno(int id) {
-        Alumno alumno = null;
+// ok
+    public void modificarAlumno(int id,Alumno alumno) {
+      
         sql = "UPDATE alumno SET apellido=?, nombre=?, fechaNac=? WHERE id_alumno=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            alumno = new Alumno();
+           
             ps.setString(1, alumno.getApellido());
             ps.setString(2, alumno.getNombre());
             ps.setDate(3, Date.valueOf(alumno.getFechaNac()));
-            ps.setInt(4, alumno.getId_alumno());
+            ps.setInt(4, id);
             ps.executeUpdate();
 
             ps.close();
-
+            JOptionPane.showMessageDialog(null, " Se modificó el alumno");
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, " No se pudo modificar el alumno");
         }
 
     }
-
+ // ok
     public Alumno buscarAlumno(int id) {
 
         Alumno alumno = null;
@@ -110,9 +110,9 @@ public class AlumnoData {
 
             sql = "SELECT * FROM alumno WHERE id_alumno=? AND activo= 1";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id); // seteo Id para buscar en DB
+            ps.setInt(1, id); 
 
-            ResultSet rs = ps.executeQuery(); // trae los datos del alumno
+            ResultSet rs = ps.executeQuery(); 
             if (rs.next()) {
                 alumno = new Alumno();
                 alumno.setId_alumno(rs.getInt(1));
@@ -130,12 +130,12 @@ public class AlumnoData {
         return alumno;
 
     }
-
+ // ok
     public List<Alumno> listarAlumnos() {
 
         List<Alumno> alumnos = new ArrayList<>();
         try {
-            sql = "SELECT * FROM alumno WHERE activo= 1";
+            sql = "SELECT * FROM alumno WHERE activo= 1  ORDER BY id_alumno ASC";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -156,7 +156,7 @@ public class AlumnoData {
         }
         return alumnos;
     }
-
+ // ok
     public void activarAlumno(int id) {
         sql = "UPDATE alumno SET activo =1 WHERE id_alumno=?";
         try {
@@ -166,7 +166,7 @@ public class AlumnoData {
             ps.executeUpdate();
 
             ps.close();
-
+            JOptionPane.showMessageDialog(null, " Se dió de alta el alumno");
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, " No se puedo activar el alumno");
