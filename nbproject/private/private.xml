@@ -6,8 +6,13 @@
         <group/>
 =======
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/Caro_Z/Documents/NetBeansProjects/Institucion/src/institucion/Institucion.java</file>
             <file>file:/C:/Users/Caro_Z/Documents/NetBeansProjects/Institucion/src/controlador/InscripcionData.java</file>
+=======
+            <file>file:/C:/Users/salva/OneDrive/Documents/GitHub/Institucion/Institucion/src/institucion/Institucion.java</file>
+            <file>file:/C:/Users/salva/OneDrive/Documents/GitHub/Institucion/Institucion/src/controlador/InscripcionData.java</file>
+>>>>>>> Stashed changes
         </group>
 >>>>>>> eaf34ae938ab82a6aa0204be3157212d66702288
     </open-files>

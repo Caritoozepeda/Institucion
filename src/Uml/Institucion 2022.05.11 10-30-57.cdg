@@ -74,12 +74,6 @@
           <Argument type="int" name="id_alumno"/>
         </Method>
         <Method name="listarInscripciones" returnType="List&lt;Inscripcion&gt;" visibility="public"/>
-        <Method name="notaAltaMateria" returnType="double" visibility="public">
-          <Argument type="int" name="idM"/>
-        </Method>
-        <Method name="notaBajaMateria" returnType="double" visibility="public">
-          <Argument type="int" name="idM"/>
-        </Method>
         <Method name="buscarAlumno" returnType="Alumno" visibility="public">
           <Argument type="int" name="id"/>
         </Method>
@@ -274,16 +268,16 @@
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation source="controlador.InscripcionData" target="modelo.Materia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="md" source="institucion.Institucion" target="controlador.MateriaData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.AlumnoData" target="modelo.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="alumno" source="modelo.Inscripcion" target="modelo.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.MateriaData" target="modelo.Materia" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="modelo.Inscripcion" target="modelo.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="ad" source="institucion.Institucion" target="controlador.AlumnoData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="controlador.InscripcionData" target="modelo.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="materia" source="modelo.Inscripcion" target="modelo.Materia" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.MateriaData" target="modelo.Materia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.AlumnoData" target="modelo.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="modelo.Inscripcion" target="modelo.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="con" source="institucion.Institucion" target="modelo.Conexion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.InscripcionData" target="modelo.Alumno" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ad" source="institucion.Institucion" target="controlador.AlumnoData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="modelo.Inscripcion" target="modelo.Materia" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="alumno" source="modelo.Inscripcion" target="modelo.Alumno" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="md" source="institucion.Institucion" target="controlador.MateriaData" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="controlador.InscripcionData" target="modelo.Materia" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>

@@ -300,7 +300,7 @@ public class InscripcionData {
         return inscripciones;
 
     }
-<<<<<<< HEAD
+// HEAD
     public double notaAltaMateria(int idM)  {
         
         String sq = "SELECT MAX(nota),materia.nombre,alumno.apellido,alumno.nombre FROM inscripcion ,alumno ,materia WHERE materia.nombre LIKE materia = ?;";
@@ -338,16 +338,7 @@ public class InscripcionData {
      public Alumno buscarAlumno(int id){
     
         AlumnoData ad=new AlumnoData(conexion);
-        
-=======
-
-    public Alumno buscarAlumno(int id) {
-
-        AlumnoData ad = new AlumnoData(conexion);
-
->>>>>>> eaf34ae938ab82a6aa0204be3157212d66702288
         return ad.buscarAlumno(id);
-
     }
 
     public Materia buscarMateria(int id) {

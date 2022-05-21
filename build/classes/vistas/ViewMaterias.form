@@ -57,8 +57,8 @@
                           </Group>
                           <Component id="jtfNombre" min="-2" pref="290" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jtfAño" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="jDateChooserAñoMateria" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                               <Component id="jCheckBoxEstado" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -89,12 +89,10 @@
               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jtfAño" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBoxEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jCheckBoxEstado" min="-2" max="-2" attributes="0"/>
+                  <Component id="jDateChooserAñoMateria" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="98" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbBorrar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -143,8 +141,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtfNombre">
     </Component>
-    <Component class="javax.swing.JTextField" name="jtfA&#xf1;o">
-    </Component>
     <Component class="javax.swing.JButton" name="jbBusccar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -186,6 +182,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpiar"/>
       </Properties>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserA&#xf1;oMateria">
     </Component>
   </SubComponents>
 </Form>
