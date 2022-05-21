@@ -31,7 +31,7 @@ public class MateriaData {
 
         con = conexion.getConexion();
     }
-
+// ok
     public void agregarMateria(Materia materia) {
         try {
             sql = "INSERT INTO materia(nombre, año, activo) VALUES (?, ?, ?)";
@@ -46,7 +46,7 @@ public class MateriaData {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 materia.setId_materia(rs.getInt(1));
-
+                JOptionPane.showMessageDialog(null, " Se agregó una nueva materia.");
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo ingresar la materia.");
 
@@ -60,19 +60,18 @@ public class MateriaData {
 
     }
 
-    //cambiar de estado de activo a inactivo
+   // ok
     public void eliminarMateria(int id) {
 
-        sql = "UPDATE materia SET activo =? WHERE id_materia=?";
+        sql = "UPDATE materia SET activo =0 WHERE id_materia=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setBoolean(1, false);
-            ps.setInt(4, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
 
             ps.close();
-
+                 JOptionPane.showMessageDialog(null, " Se eliminó la materia");
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, " No se pudo elimiar la materia");
@@ -80,20 +79,18 @@ public class MateriaData {
 
     }
 
-    // modificar debe retornara la materia modificada?
-    public void modificarMateria(int id) {
-        Materia materia = null;
-        sql = "UPDATE materia SET nombre=?, año=? WHERE id_materia=?";
+   // ok
+    public void modificarMateria(int id, Materia materia) {
+       
+        sql = "UPDATE materia SET nombre=?, año=? WHERE id_materia= ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            materia = new Materia();
 
             ps.setString(1, materia.getNombre());
             ps.setInt(2, (materia.getAnio()));
-
-            ps.setInt(4, materia.getId_materia());
+            ps.setInt(3, id);
             ps.executeUpdate();
-
+            JOptionPane.showMessageDialog(null, " Se modificó la materia");
             ps.close();
 
         } catch (SQLException e) {
@@ -102,21 +99,21 @@ public class MateriaData {
         }
 
     }
-
+ // ok
     public Materia buscarMateria(int id) {
         Materia materia = null;
         try {
 
             sql = "SELECT * FROM materia WHERE id_materia=?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id); // seteo Id para buscar en DB
+            ps.setInt(1, id); 
 
-            ResultSet rs = ps.executeQuery(); // trae los datos del alumno
+            ResultSet rs = ps.executeQuery(); 
             if (rs.next()) {
                 materia = new Materia();
                 materia.setId_materia(rs.getInt(1));
                 materia.setNombre(rs.getString(2));
-                materia.setAnio(rs.getInt(3)); // pasar de Date a LocalDate
+                materia.setAnio(rs.getInt(3)); 
                 materia.setActivo(rs.getBoolean(4));
 
             }
@@ -128,12 +125,12 @@ public class MateriaData {
         return materia;
 
     }
-
+ // ok
     public List<Materia> listarMaterias() {
 
         List<Materia> materias = new ArrayList<>();
         try {
-            sql = "SELECT * FROM materia WHERE activo= 1";
+            sql = "SELECT * FROM materia WHERE activo= 1 ORDER BY id_materia ASC";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -153,18 +150,17 @@ public class MateriaData {
         }
         return materias;
     }
-
+//ok
     public void activarMateria(int id) {
         sql = "UPDATE materia SET activo =1 WHERE id_materia=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
-            // ps.setBoolean(1, false);
             ps.setInt(1, id);
             ps.executeUpdate();
 
             ps.close();
-
+            JOptionPane.showMessageDialog(null, " Se activó la materia ");
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, " No se puede activar la materia ");
