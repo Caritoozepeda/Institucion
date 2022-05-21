@@ -333,10 +333,10 @@ public class InscripcionData {
         
         
     }
-    public double notaAltaMateria(int idM) throws SQLException {
+    public double notaAltaMateria(int idM)  {
         
         String sq = "SELECT MAX(nota),materia.nombre,alumno.apellido,alumno.nombre FROM inscripcion ,alumno ,materia WHERE materia.nombre LIKE materia = ?;";
-        int nota = 0;
+        double nota = 0;
         try {
             PreparedStatement ps = con.prepareStatement(sq, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, idM);
@@ -350,7 +350,7 @@ public class InscripcionData {
         return 0;
     }
     
-    public double notaBajaMateria(int idM) throws SQLException {
+    public double notaBajaMateria(int idM) {
         
         String sql = "SELECT MIN(nota),materia.nombre,alumno.apellido,alumno.nombre FROM inscripcion ,alumno ,materia WHERE materia.nombre LIKE materia = ?;";
         int nota;
