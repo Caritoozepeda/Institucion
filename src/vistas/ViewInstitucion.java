@@ -24,7 +24,7 @@ public class ViewInstitucion extends javax.swing.JFrame {
     public ViewInstitucion() {
         initComponents();
      
-        this.setSize(555, 655);
+        this.setSize(700, 700);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
     }
