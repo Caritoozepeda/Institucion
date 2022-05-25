@@ -14,6 +14,7 @@ import modelo.*;
 import modelo.Alumno;
 import modelo.Conexion;
 import modelo.Materia;
+import vistas.ViewInstitucion;
 
 /**
  *
@@ -30,14 +31,15 @@ public class Institucion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-
-        conexion = new Conexion();
+       // TODO code application logic here
+        ViewInstitucion cv= new  ViewInstitucion();
+        cv.setVisible(true);
+  /*         conexion = new Conexion();
         ad = new AlumnoData(conexion);
         Alumno a = new Alumno(1, "Nuñez", "Pablo", LocalDate.of(1990, 8, 20), true);
         Alumno a2 = new Alumno(2, "Mino", "Sofia", LocalDate.of(1990, 9, 10), true);
 
-        // ..................METODOS ALUMNO DATA............................////
+     */   // ..................METODOS ALUMNO DATA............................////
 //        ad.agregarAlumno(a);
 //       ad.agregarAlumno(a2);
 //      System.out.println(" "+ ad.buscarAlumno(1));
@@ -52,11 +54,11 @@ public class Institucion {
             }
          */
         // ..................METODOS MATERIA DATA............................////      
-        md = new MateriaData(conexion);
+   /*         md = new MateriaData(conexion);
 
         Materia m = new Materia(11, "Dibujo", 2, true);
         Materia m1 = new Materia("Algoritmos", 1, true);
-
+ */
         //         md.agregarMateria(m);
         //           md.eliminarMateria(12);
         //      md.modificarMateria(12,m1);
@@ -70,9 +72,9 @@ public class Institucion {
           }
          */
 // ..................METODOS INSCRIPCION DATA............................//// 
-        Inscripcion in = new Inscripcion(a2, m, 7.7);
+   /*       Inscripcion in = new Inscripcion(a2, m, 7.7);
         InscripcionData id = new InscripcionData(conexion);
-
+  */ 
         /* 1
         List<Materia> mat = id.listarMateriasPorAlumno(7);
             for(Materia t: mat ){
@@ -116,30 +118,42 @@ public class Institucion {
                 System.out.println(" "+t.getMateria().getNombre()+"  "+t.getMateria().getAnio()+" - "+t.getNota() );
             }
          */
- /*     10
+ /*     10 
          List<Inscripcion> insc= id.alumnosDesaprobados();
             for(Inscripcion p: insc){
              
            System.out.print("materia "+ p.getMateria().getId_materia()+ "- ");
            System.out.print(p.getMateria().getNombre() +" ,");
-            System.out.print(p.getAlumno().getApellido());
+            System.out.print(p.getAlumno().getApellido()+ " ,"+p.getAlumno().getNombre());
              System.out.println(" - nota "+p.getNota());
            
           }
-         */
+       */ 
         // 
-        /*  11
+        /*  11    
         List<Inscripcion> insc= id.alumnosAprobados();
+            for(Inscripcion p: insc){
+             
+         System.out.print("materia "+ p.getMateria().getId_materia()+ "- ");
+           System.out.print(p.getMateria().getNombre() +" ,");
+       System.out.print(p.getAlumno().getApellido() + ","+p.getAlumno().getNombre());
+             System.out.println(" - nota "+p.getNota());
+           
+          }
+ 
+       */
+        
+     /*  // 12  
+        List<Inscripcion> insc= id.listarInscripcionesSinNota();
             for(Inscripcion p: insc){
              
            System.out.print("materia "+ p.getMateria().getId_materia()+ "- ");
            System.out.print(p.getMateria().getNombre() +" ,");
-            System.out.print(p.getAlumno().getApellido());
-             System.out.println(" - nota "+p.getNota());
-           
-          }
-   
-         */
+            System.out.print(p.getAlumno().getApellido()+ " ,"+p.getAlumno().getNombre());
+     
+            
+            System.out.println(" - nota "+p.getNota());
     }
-
+  */
+}
 }

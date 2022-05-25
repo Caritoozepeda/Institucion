@@ -34,8 +34,12 @@ public class InscripcionData {
         this.conexion = conexion;
         con = conexion.getConexion();
     }
-// ok 1
 
+
+    public InscripcionData() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+// ok 1 ***
     public List<Materia> listarMateriasPorAlumno(int id_alumno) {
 
         List<Materia> materias = new ArrayList<>();
@@ -57,7 +61,7 @@ public class InscripcionData {
                 materias.add(mat);
 
             }
-            JOptionPane.showMessageDialog(null, "Se generó el listado");
+           
             ps.close();
 
         } catch (SQLException ex) {
@@ -65,7 +69,7 @@ public class InscripcionData {
         }
         return materias;
     }
-//OK 2
+//OK 2 ****
 
     public List<Alumno> listarAlumnosPorMateria(int id_materia) {
 
@@ -98,7 +102,7 @@ public class InscripcionData {
         }
         return alumnos;
     }
-// OK 3
+// OK 3 *****
 
     public void inscribir(Inscripcion insc) {
         sql = "INSERT INTO inscripcion (id_alumno, id_materia, nota) VALUES (?, ?, ?)";
@@ -130,7 +134,7 @@ public class InscripcionData {
 
     }
 
-    // OK  4
+    // OK  4 *****
     public void eliminarInscripcion(int id_alumno, int id_materia) {
 
         try {
@@ -151,7 +155,7 @@ public class InscripcionData {
         }
 
     }
-// OK 5
+   // OK 5 ////
 
     public void registrarNota(double nota, int id_alumno, int id_materia) {
 
@@ -241,7 +245,7 @@ public class InscripcionData {
         return alumnos;
     }
 
-    //ok 8
+    //ok 8***********
     public List<Materia> listarMateriasNoInscriptasPorAlumno(int id_alumno) {
         List<Materia> materias = new ArrayList<>();
         Materia materia;
@@ -268,12 +272,12 @@ public class InscripcionData {
         return materias;
     }
 
-    //OK    9
+    //OK    9 ******
     public List<Inscripcion> listarInscripciones() {
         List<Inscripcion> inscripciones = new ArrayList<>();
 
         try {
-            sql = "SELECT * FROM inscripcion ";
+            sql = "SELECT * FROM inscripcion ORDER BY inscripcion.nota DESC ";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -315,30 +319,30 @@ public class InscripcionData {
         return md.buscarMateria(id);
 
     }
-    //ok nuevo 10
+    //ok nuevo 10 yo
 
     public List<Inscripcion> alumnosDesaprobados() {
         List<Inscripcion> inscripciones = new ArrayList<>();
         Inscripcion inscrip;
 
-        sql = " SELECT alumno.id_alumno, alumno.apellido, alumno.nombre, inscripcion.nota, materia.id_materia, materia.nombre FROM alumno, inscripcion, materia WHERE alumno.id_alumno = inscripcion.id_alumno and materia.id_materia = inscripcion.id_materia AND inscripcion.nota < 6 ORDER BY inscripcion.nota DESC, materia.nombre ASC ";
+        sql = "SELECT * FROM inscripcion WHERE inscripcion.nota <6 AND inscripcion.nota >0;";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
+                
                 inscrip = new Inscripcion();
+                inscrip.setId_inscripcion(rs.getInt("id_inscripcion"));
 
                 Alumno a = buscarAlumno(rs.getInt("id_alumno"));
-                a.setApellido(rs.getString("apellido"));
-                a.setNombre(rs.getString("nombre"));
-
-                inscrip.setNota(rs.getDouble("nota"));
+                inscrip.setAlumno(a);
 
                 Materia m = buscarMateria(rs.getInt("id_materia"));
-                m.setNombre(rs.getString("nombre"));
-
+                inscrip.setMateria(m);
+                inscrip.setNota(rs.getInt("nota"));
+                 
                 inscrip.setAlumno(a);
                 inscrip.setMateria(m);
 
@@ -351,29 +355,30 @@ public class InscripcionData {
         return inscripciones;
     }
 
-    // ok nuevo 11
+    // ok nuevo 11  
     public List<Inscripcion> alumnosAprobados() {
         List<Inscripcion> inscripciones = new ArrayList<>();
         Inscripcion inscrip;
+ try {
+        sql = " SELECT alumno.id_alumno, alumno.apellido, alumno.nombre, materia.id_materia, materia.nombre, materia.año, inscripcion.nota FROM alumno, inscripcion, materia WHERE alumno.id_alumno = inscripcion.id_alumno and materia.id_materia = inscripcion.id_materia AND inscripcion.nota > 6 ORDER BY inscripcion.nota DESC, materia.nombre ASC ";
 
-        sql = " SELECT alumno.id_alumno, alumno.apellido, alumno.nombre, inscripcion.nota, materia.id_materia, materia.nombre FROM alumno, inscripcion, materia WHERE alumno.id_alumno = inscripcion.id_alumno and materia.id_materia = inscripcion.id_materia AND inscripcion.nota > 6 ORDER BY inscripcion.nota DESC, materia.nombre ASC ";
-
-        try {
+       
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
                 inscrip = new Inscripcion();
-
+                            
                 Alumno a = buscarAlumno(rs.getInt("id_alumno"));
                 a.setApellido(rs.getString("apellido"));
                 a.setNombre(rs.getString("nombre"));
 
-                inscrip.setNota(rs.getDouble("nota"));
-
+                
                 Materia m = buscarMateria(rs.getInt("id_materia"));
-                m.setNombre(rs.getString("nombre"));
-
+              
+                
+                inscrip.setNota(rs.getDouble("nota"));
+                
                 inscrip.setAlumno(a);
                 inscrip.setMateria(m);
 
@@ -385,5 +390,38 @@ public class InscripcionData {
         }
         return inscripciones;
     }
+//// 12
+    
+    
+     public List<Inscripcion> listarInscripcionesSinNota() {
+        List<Inscripcion> inscripciones = new ArrayList<>();
 
+        try {
+            sql = "SELECT * FROM inscripcion WHERE inscripcion.nota =0 ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            Inscripcion inscrip;
+            while (rs.next()) {
+
+                inscrip = new Inscripcion();
+                inscrip.setId_inscripcion(rs.getInt("id_inscripcion"));
+
+                Alumno a = buscarAlumno(rs.getInt("id_alumno"));
+                inscrip.setAlumno(a);
+
+                Materia m = buscarMateria(rs.getInt("id_materia"));
+                inscrip.setMateria(m);
+                inscrip.setNota(rs.getInt("nota"));
+
+                inscripciones.add(inscrip);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error en listar inscripciones.");
+        }
+
+        return inscripciones;
+
+    }
 }
