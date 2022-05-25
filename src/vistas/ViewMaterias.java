@@ -33,13 +33,13 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jtfCodigo = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
-        jtfAño = new javax.swing.JTextField();
         jbBusccar = new javax.swing.JButton();
         jCheckBoxEstado = new javax.swing.JCheckBox();
         jbGuardar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
         jbActualizar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
+        jDateChooserAñoMateria = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(0, 102, 51));
 
@@ -104,8 +104,8 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
                                 .addComponent(jbBusccar))
                             .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
+                                .addComponent(jDateChooserAñoMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15)
                                 .addComponent(jCheckBoxEstado)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -127,10 +127,9 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jCheckBoxEstado)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                    .addComponent(jCheckBoxEstado)
+                    .addComponent(jDateChooserAñoMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar)
                     .addComponent(jbBorrar)
@@ -145,6 +144,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox jCheckBoxEstado;
+    private com.toedter.calendar.JDateChooser jDateChooserAñoMateria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -154,7 +154,6 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbBusccar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
-    private javax.swing.JTextField jtfAño;
     private javax.swing.JTextField jtfCodigo;
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
