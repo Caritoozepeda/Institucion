@@ -5,19 +5,55 @@
  */
 package vistas;
 
-/**
- *
- * @author salva
- */
+import controlador.AlumnoData;
+import controlador.InscripcionData;
+import controlador.MateriaData;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelo.Alumno;
+import modelo.Conexion;
+import modelo.Inscripcion;
+import modelo.Materia;
+
+
 public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ViewListadoDeAlumnosPorMateria
-     */
+    private ArrayList<Alumno> listAlumnos;
+    private AlumnoData ad;
+    private ArrayList<Inscripcion> listaInscripcion;
+    private InscripcionData id;
+    private ArrayList<Materia> listaMaterias;
+    private MateriaData md;
+    private Conexion conexion;
+    private DefaultTableModel modelo1;
+    
+    
     public ViewListadoDeAlumnosPorMateria() {
         initComponents();
+        
+        conexion =new Conexion();
+        
+         md = new MateriaData(conexion);
+       listaMaterias =(ArrayList<Materia>)md.listarMaterias();
+        
+          cargarMaterias();
+        
+        ad= new AlumnoData(conexion);
+        listAlumnos= (ArrayList<Alumno>) ad.listarAlumnos();
+        
+      
+        modelo1= new DefaultTableModel();
+        armarCabeceraTabla();
+        
+       id = new InscripcionData(conexion);                  
+       listaInscripcion = (ArrayList<Inscripcion>)id.listarInscripciones();
+       
+      
+        
+        
     }
-
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,20 +63,27 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBoxMateria = new javax.swing.JComboBox<>();
+        cbMateria = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableListadoMateriaXAlumnos = new javax.swing.JTable();
+        tAlumnos = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        btBuscar = new javax.swing.JButton();
+        btSalir = new javax.swing.JButton();
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 102, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 51, 153));
         jLabel1.setText("LISTADO DE ALUMNOS POR MATERIA");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("MATERIA");
 
-        jTableListadoMateriaXAlumnos.setModel(new javax.swing.table.DefaultTableModel(
+        tAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -48,54 +91,150 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "APELLIDO", "NOMBRE", "FECHA DE NAC"
             }
         ));
-        jScrollPane1.setViewportView(jTableListadoMateriaXAlumnos);
+        jScrollPane1.setViewportView(tAlumnos);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("LISTADO DE ALUMNOS");
+
+        btBuscar.setText("BUSCAR");
+        btBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBuscarActionPerformed(evt);
+            }
+        });
+
+        btSalir.setText("SALIR");
+        btSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(jLabel2)
-                .addGap(33, 33, 33)
-                .addComponent(jComboBoxMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(177, 177, 177))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(cbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(51, 51, 51)
+                                .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(11, 11, 11)))
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBoxMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(cbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel3)
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
+        // TODO add your handling code here:
+        cargaDatosInscriptos();
+    }//GEN-LAST:event_btBuscarActionPerformed
 
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btSalirActionPerformed
+    private void cargarMaterias(){
+    //Carga las materias al ComboBox
+  
+   
+         for(Materia item:listaMaterias){
+            
+            cbMateria.addItem(item);
+          
+    }
+        
+    }
+     private void armarCabeceraTabla(){
+  
+           //Titulos de Columnas
+        ArrayList<Object> columnas=new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("Apellido");
+        columnas.add("Nombre");
+         columnas.add("Fecha de Nac");
+         
+        for(Object it:columnas){
+        
+            modelo1.addColumn(it);
+        }
+        tAlumnos.setModel(modelo1);
+  }
+     
+     private void borraFilasTabla(){
+
+        int a =modelo1.getRowCount()-1;
+
+           for(int i=a;i>=0;i--){
+   
+                modelo1.removeRow(i );
+           }
+}
+
+      private void cargaDatosInscriptos(){
+    
+        borraFilasTabla();
+           //Llenar filas con las materias en las que esta incripto un alumno
+           
+        Materia seleccionado= (Materia)cbMateria.getSelectedItem();
+        
+        ArrayList<Alumno> lista = (ArrayList)id.listarAlumnosPorMateria(seleccionado.getId_materia());
+        
+        for(Alumno a:lista){
+        
+            modelo1.addRow(new Object[]{a.getId_alumno(),a.getApellido(),a.getNombre() ,a.getFechaNac()});
+        }
+    }
+     
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBoxMateria;
+    private javax.swing.JButton btBuscar;
+    private javax.swing.JButton btSalir;
+    private javax.swing.JComboBox<Materia> cbMateria;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableListadoMateriaXAlumnos;
+    private javax.swing.JTable tAlumnos;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import java.awt.Color;
 import vistas.ViewAlumnos;
 import vistas.ViewCargaDeNotas;
 import vistas.ViewFormularioInscripcion;
@@ -15,13 +16,17 @@ import vistas.ViewMaterias;
  *
  * @author salva
  */
-public class Institucion extends javax.swing.JFrame {
+public class ViewInstitucion extends javax.swing.JFrame {
 
     /**
      * Creates new form Institucion
      */
-    public Institucion() {
+    public ViewInstitucion() {
         initComponents();
+     
+        this.setSize(555, 655);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
     }
 
     /**
@@ -47,6 +52,7 @@ public class Institucion extends javax.swing.JFrame {
         jmiManipulacionDeNotas = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jmiListadoDeAlumnosporMateria = new javax.swing.JMenuItem();
+        jmConsultasNotasAlumnos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +137,14 @@ public class Institucion extends javax.swing.JFrame {
         });
         jMenu6.add(jmiListadoDeAlumnosporMateria);
 
+        jmConsultasNotasAlumnos.setText("Notas de Alumnos");
+        jmConsultasNotasAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmConsultasNotasAlumnosActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jmConsultasNotasAlumnos);
+
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
@@ -199,10 +213,25 @@ public class Institucion extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         ViewListadoDeAlumnosPorMateria vlapm = new ViewListadoDeAlumnosPorMateria();
+        
+                
         vlapm.setVisible(true);
         escritorio.add(vlapm);
         escritorio.moveToFront(vlapm);
     }//GEN-LAST:event_jmiListadoDeAlumnosporMateriaActionPerformed
+
+    private void jmConsultasNotasAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultasNotasAlumnosActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewConsultasNotasDeAlumnos cna= new  ViewConsultasNotasDeAlumnos();
+        cna.setVisible(true);
+        escritorio.add(cna);
+        escritorio.moveToFront(cna);
+        
+        
+        
+    }//GEN-LAST:event_jmConsultasNotasAlumnosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,20 +250,21 @@ public class Institucion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Institucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Institucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Institucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Institucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewInstitucion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Institucion().setVisible(true);
+                new ViewInstitucion().setVisible(true);
             }
         });
     }
@@ -248,6 +278,7 @@ public class Institucion extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jmConsultasNotasAlumnos;
     private javax.swing.JMenuItem jmiFormularioDeAlumnos;
     private javax.swing.JMenuItem jmiFormularioDeMaterias;
     private javax.swing.JMenuItem jmiListadoDeAlumnosporMateria;
