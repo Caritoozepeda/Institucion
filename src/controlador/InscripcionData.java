@@ -298,7 +298,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en llistar inscripciones.");
+            JOptionPane.showMessageDialog(null, " Error en listar inscripciones.");
         }
 
         return inscripciones;

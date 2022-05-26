@@ -59,6 +59,22 @@ public class MateriaData {
         }
 
     }
+    
+    public boolean materiaExiste(int id) {
+        boolean ret = false;        
+        try {
+            sql = "SELECT * FROM `materia` WHERE `id_materia` = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                ret = true;
+             }
+            } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error al buscar la materia, no existe");
+                    }
+        return ret;
+    }
 
    // ok
     public void eliminarMateria(int id) {
