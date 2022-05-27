@@ -6,8 +6,10 @@
 package vistas;
 
 import controlador.AlumnoData;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import modelo.Alumno;
 import modelo.Conexion;
@@ -71,6 +73,11 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
         jbBuscar.setBackground(new java.awt.Color(255, 255, 255));
         jbBuscar.setForeground(new java.awt.Color(255, 255, 255));
         jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
         jLabel2.setText("Apellido:");
@@ -231,9 +238,21 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        String apellido = aApellido.getText();
+        String nombre = aNombre.getText();
+
+        Date fech = (Date) aDate.getDate();
+        LocalDate fechaNac = fech.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        boolean estado = aEstado.isEnabled();
+
+        Alumno a = new Alumno(apellido, nombre, fechaNac, estado);
+
+        ad.agregarAlumno(a);
+        aID.setText(a.getId_alumno() + "");
 
         //int legajo = Integer.parseInt(aID.getText());
-        String apellido = aApellido.getText();
+       /* String apellido = aApellido.getText();
         String nombre = aNombre.getText();
 
         SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
@@ -247,8 +266,23 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
         Alumno a = new Alumno(apellido, nombre, fecnac, estado);
 
         ad.agregarAlumno(a);
-        aID.setText(a.getId_alumno()+"");
+        aID.setText(a.getId_alumno()+"");*/
     }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+       int id = Integer.parseInt(aID.getText());
+       Alumno a = ad.buscarAlumno(id);
+      
+       
+        if (a !=null) {  
+            aID.setText(a.getId_alumno()+"");
+            aNombre.setText(a.getNombre());
+            aApellido.setText(a.getApellido());
+            aDate.setDate(Date.valueOf(a.getFechaNac()));
+            aEstado.setSelected(a.isActivo());
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
