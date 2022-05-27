@@ -304,40 +304,6 @@ public class InscripcionData {
         return inscripciones;
 
     }
-// HEAD
-    public double notaAltaMateria(int idM)  {
-        
-        String sq = "SELECT MAX(nota),materia.nombre,alumno.apellido,alumno.nombre FROM inscripcion ,alumno ,materia WHERE materia.nombre LIKE materia = ?;";
-        double nota = 0;
-        try {
-            PreparedStatement ps = con.prepareStatement(sq, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, idM);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-            nota=rs.getInt("nota");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de conexion.");
-        }
-        return 0;
-    }
-    
-    public double notaBajaMateria(int idM) {
-        
-        String sql = "SELECT MIN(nota),materia.nombre,alumno.apellido,alumno.nombre FROM inscripcion ,alumno ,materia WHERE materia.nombre LIKE materia = ?;";
-        int nota;
-        try {
-            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, idM);
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-            nota=rs.getInt("nota");
-            }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error de conexion.");
-        }
-        return 0;
-    }
     
      public Alumno buscarAlumno(int id){
     

@@ -59,6 +59,7 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
         ArrayList<Object> columnas = new ArrayList<Object>();
         columnas.add("ID");
         columnas.add("Materia");
+        columnas.add("Año");
         columnas.add("Nota");
         
         for(Object it: columnas){
@@ -88,7 +89,7 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
         int id = a.getId_alumno();
         List<Inscripcion> listIns = inscripcionData.buscarInscripcionesPorAlumno(id);
         for(Inscripcion ins: listIns){
-            modelo.addRow(new Object[]{ins.getId_inscripcion(), (ins.getMateria()).getNombre(), ins.getNota()});
+            modelo.addRow(new Object[]{ins.getMateria().getId_materia(), ins.getMateria().getNombre(),ins.getMateria().getAnio(), ins.getNota()});
         }
     }
 
@@ -139,13 +140,13 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
 
         jtCargaDeNotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Materia", "Nota"
+                "ID", "Materia", "Año", "Nota"
             }
         ));
         jScrollPane1.setViewportView(jtCargaDeNotas);
@@ -219,15 +220,23 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
         int filaSeleccionada = jtCargaDeNotas.getSelectedRow();
-            if(filaSeleccionada != 1){
-                double id = (Integer)jtCargaDeNotas.getValueAt(filaSeleccionada, 0);
-                String materia =(String) jtCargaDeNotas.getValueAt(filaSeleccionada, 1);
-                int nota = (Integer) jtCargaDeNotas.getValueAt(filaSeleccionada, 2);
+        
+            if(filaSeleccionada != -1){
+                
+                 Alumno a=(Alumno) jComboBoxAlumno.getSelectedItem();
+                
+                int id_materia = (Integer)jtCargaDeNotas.getValueAt(filaSeleccionada, 0);
+                String nombre =(String) jtCargaDeNotas.getValueAt(filaSeleccionada, 1);
+                int anio=(Integer)jtCargaDeNotas.getValueAt(filaSeleccionada, 2);
+                double nota = (Double) jtCargaDeNotas.getValueAt(filaSeleccionada, 3);
+                
+                Materia m=new Materia(id_materia,nombre,anio,true);
                 
                 InscripcionData ins = new InscripcionData(conexion);
-                
-                ins.registrarNota(Double.valueOf(id),Integer.parseInt(materia),Integer.valueOf(nota));
+
+                ins.registrarNota(nota,a.getId_alumno(),id_materia);
             }
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
