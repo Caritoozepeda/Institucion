@@ -106,7 +106,7 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBoxAlumno = new javax.swing.JComboBox<>();
         jbGuardar = new javax.swing.JButton();
-        jbCancelar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtCargaDeNotas = new javax.swing.JTable();
 
@@ -130,10 +130,10 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jbCancelar.setText("Cancelar");
-        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCancelarActionPerformed(evt);
+                jbSalirActionPerformed(evt);
             }
         });
 
@@ -157,9 +157,9 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbGuardar)
-                .addGap(69, 69, 69)
-                .addComponent(jbCancelar)
-                .addGap(230, 230, 230))
+                .addGap(73, 73, 73)
+                .addComponent(jbSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(262, 262, 262))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -188,7 +188,7 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar)
-                    .addComponent(jbCancelar))
+                    .addComponent(jbSalir))
                 .addGap(29, 29, 29))
         );
 
@@ -230,10 +230,10 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
             }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jbCancelarActionPerformed
+    }//GEN-LAST:event_jbSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -242,8 +242,8 @@ public class ViewCargaDeNotas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JTable jtCargaDeNotas;
     // End of variables declaration//GEN-END:variables
 }

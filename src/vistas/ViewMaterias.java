@@ -48,6 +48,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jbActualizar = new javax.swing.JButton();
         jbLimpiar = new javax.swing.JButton();
         jtfAño = new javax.swing.JTextField();
+        jbSalir = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 51));
 
@@ -63,6 +64,23 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         jLabel4.setText("Año:");
 
+        jtfCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfCodigoKeyTyped(evt);
+            }
+        });
+
+        jtfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfNombreFocusLost(evt);
+            }
+        });
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
+
         jbBusccar.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jbBusccar.setText("Buscar");
         jbBusccar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +93,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
 
         jbGuardar.setForeground(new java.awt.Color(0, 102, 204));
         jbGuardar.setText("Guardar");
+        jbGuardar.setEnabled(false);
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
@@ -104,6 +123,26 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
             }
         });
 
+        jtfAño.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfAñoFocusLost(evt);
+            }
+        });
+        jtfAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfAñoKeyTyped(evt);
+            }
+        });
+
+        jbSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jbSalir.setForeground(new java.awt.Color(255, 51, 51));
+        jbSalir.setText("SALIR");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,15 +154,6 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbGuardar)
-                        .addGap(46, 46, 46)
-                        .addComponent(jbBorrar)
-                        .addGap(39, 39, 39)
-                        .addComponent(jbActualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                        .addComponent(jbLimpiar)
-                        .addGap(33, 33, 33))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -139,8 +169,17 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jCheckBoxEstado)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jbBorrar)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(jbActualizar))
+                                    .addComponent(jCheckBoxEstado)
+                                    .addComponent(jbSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addComponent(jbGuardar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbLimpiar)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,13 +202,15 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jCheckBoxEstado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbGuardar)
                     .addComponent(jbBorrar)
                     .addComponent(jbActualizar)
                     .addComponent(jbLimpiar))
-                .addGap(67, 67, 67))
+                .addGap(35, 35, 35)
+                .addComponent(jbSalir)
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -181,6 +222,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jtfNombre.setText(m.getNombre());
         jtfAño.setText(m.getAnio()+"");
         jCheckBoxEstado.setAutoscrolls(m.isActivo());
+        jbGuardar.setEnabled(false);
     }//GEN-LAST:event_jbBusccarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
@@ -199,6 +241,9 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jtfNombre.setText("");
         jtfAño.setText("");
         jCheckBoxEstado.setSelected(false);
+        jbGuardar.setEnabled(true);
+        jbBorrar.setEnabled(true);
+        jbActualizar.setEnabled(true);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
@@ -207,6 +252,8 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         int id = Integer.parseInt(jtfCodigo.getText());
         if(materiaData.materiaExiste(id)){
             materiaData.eliminarMateria(id);
+            jbGuardar.setEnabled(false);
+            jbActualizar.setEnabled(false);
         }else{
             JOptionPane.showMessageDialog(this, "Materia no existente");
         }
@@ -215,13 +262,66 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
         // TODO add your handling code here:
         if (jtfCodigo.getText() != null){
+            int id = Integer.parseInt(jtfCodigo.getText());
             String materia = jtfNombre.getText();
             int anio = Integer.parseInt(jtfAño.getText());
             boolean activo = jCheckBoxEstado.isSelected();
             Materia m = new Materia(materia,anio,activo);
-            materiaData.agregarMateria(m);
+            materiaData.modificarMateria(id, m);
+            jbGuardar.setEnabled(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "");
         }
     }//GEN-LAST:event_jbActualizarActionPerformed
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        // TODO add your handling code here:
+
+  
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNombreFocusLost
+        // TODO add your handling code here:
+        if (jtfNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Nombre debe estar completo");
+            jtfNombre.requestFocus();
+        }
+    }//GEN-LAST:event_jtfNombreFocusLost
+
+    private void jtfAñoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAñoFocusLost
+        // TODO add your handling code here:
+        if (jtfAño.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El campo Año debe estar completo");
+            jtfAño.requestFocus();
+        }else{
+            jbGuardar.setEnabled(true);
+        }
+    }//GEN-LAST:event_jtfAñoFocusLost
+
+    private void jtfCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCodigoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this,"El Codigo debe ser numérico");
+            evt.consume();
+        }        
+    }//GEN-LAST:event_jtfCodigoKeyTyped
+
+    private void jtfAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAñoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this,"El Año debe ser numérico");
+            evt.consume();
+        }    
+    }//GEN-LAST:event_jtfAñoKeyTyped
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -235,6 +335,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbBusccar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JTextField jtfAño;
     private javax.swing.JTextField jtfCodigo;
     private javax.swing.JTextField jtfNombre;
