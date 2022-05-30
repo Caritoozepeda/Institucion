@@ -115,7 +115,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jCheckBoxEstado.setForeground(new java.awt.Color(0, 0, 153));
         jCheckBoxEstado.setText("ESTADO");
         getContentPane().add(jCheckBoxEstado);
-        jCheckBoxEstado.setBounds(440, 285, 69, 23);
+        jCheckBoxEstado.setBounds(440, 285, 72, 24);
 
         jbGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbGuardar.setText("GUARDAR");
@@ -146,7 +146,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbActualizar);
-        jbActualizar.setBounds(370, 390, 111, 34);
+        jbActualizar.setBounds(370, 390, 108, 34);
 
         jbLimpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbLimpiar.setText("LIMPIAR");
@@ -181,7 +181,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         getContentPane().add(jbSalir);
         jbSalir.setBounds(580, 420, 101, 40);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(49, 362, 702, 10);
+        jSeparator1.setBounds(49, 362, 702, 2);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_form_institucion.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
@@ -194,10 +194,14 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
     private void jbBusccarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBusccarActionPerformed
         // TODO add your handling code here:
         Materia m = materiaData.buscarMateria(Integer.parseInt(jtfCodigo.getText()));
+        if(m != null){
         jtfNombre.setText(m.getNombre());
         jtfAño.setText(m.getAnio()+"");
         jCheckBoxEstado.setAutoscrolls(m.isActivo());
         jbGuardar.setEnabled(false);
+        jbBorrar.setEnabled(true);
+        jbActualizar.setEnabled(true);
+        }
     }//GEN-LAST:event_jbBusccarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
@@ -245,7 +249,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
             materiaData.modificarMateria(id, m);
             jbGuardar.setEnabled(false);
         }else{
-            JOptionPane.showMessageDialog(this, "");
+            JOptionPane.showMessageDialog(this, "Materia ya actualizada");
         }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
