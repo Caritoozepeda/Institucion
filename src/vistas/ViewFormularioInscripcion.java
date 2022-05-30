@@ -22,10 +22,12 @@ public class ViewFormularioInscripcion extends javax.swing.JInternalFrame {
    
 public ViewFormularioInscripcion() {
         initComponents();
+        this.setSize(600, 650);
         
+      
         conexion =new Conexion();
         alumnoData= new AlumnoData(conexion);
-        listaAlumnos= (ArrayList<Alumno>) alumnoData.listarAlumnos();
+        listaAlumnos= (ArrayList<Alumno>) alumnoData.listarAlumnosActivos();
         
         cargaAlumnos();
         modelo= new DefaultTableModel();
@@ -35,7 +37,7 @@ public ViewFormularioInscripcion() {
        listaInscripcion = (ArrayList)inscripcionData.listarInscripciones();
        
        materiaData = new MateriaData(conexion);
-       listaMaterias =(ArrayList)materiaData.listarMaterias();
+       listaMaterias =(ArrayList)materiaData.listarMateriasActivas();
          
 }
 
@@ -56,25 +58,44 @@ public ViewFormularioInscripcion() {
         btSalir = new javax.swing.JButton();
         rbInscriptas = new javax.swing.JRadioButton();
         rbNoInscriptas = new javax.swing.JRadioButton();
+        jLabel4 = new javax.swing.JLabel();
+
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("FORMULARIO DE INSCRIPCION");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(120, 30, 384, 29);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ALUMNO");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(100, 120, 102, 22);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("LISTADO DE MATERIAS");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(200, 180, 230, 22);
 
         cbAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbAlumnosActionPerformed(evt);
             }
         });
+        getContentPane().add(cbAlumnos);
+        cbAlumnos.setBounds(210, 120, 235, 20);
 
+        tMaterias.setBackground(new java.awt.Color(204, 204, 255));
+        tMaterias.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 153)));
+        tMaterias.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -87,6 +108,10 @@ public ViewFormularioInscripcion() {
         tMaterias.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tMaterias);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(70, 270, 528, 130);
+
+        btInscribir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btInscribir.setText("Inscribir");
         btInscribir.setEnabled(false);
         btInscribir.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +119,10 @@ public ViewFormularioInscripcion() {
                 btInscribirActionPerformed(evt);
             }
         });
+        getContentPane().add(btInscribir);
+        btInscribir.setBounds(90, 430, 84, 36);
 
+        btAnular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btAnular.setText("Anular Inscripción");
         btAnular.setEnabled(false);
         btAnular.addActionListener(new java.awt.event.ActionListener() {
@@ -102,21 +130,34 @@ public ViewFormularioInscripcion() {
                 btAnularActionPerformed(evt);
             }
         });
+        getContentPane().add(btAnular);
+        btAnular.setBounds(270, 430, 143, 36);
 
+        btSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btSalir.setText("Salir");
         btSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(btSalir);
+        btSalir.setBounds(500, 430, 75, 36);
 
+        rbInscriptas.setBackground(new java.awt.Color(153, 153, 153));
+        rbInscriptas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbInscriptas.setForeground(new java.awt.Color(0, 0, 153));
         rbInscriptas.setText("Inscriptas");
         rbInscriptas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbInscriptasActionPerformed(evt);
             }
         });
+        getContentPane().add(rbInscriptas);
+        rbInscriptas.setBounds(110, 220, 90, 23);
 
+        rbNoInscriptas.setBackground(new java.awt.Color(153, 153, 153));
+        rbNoInscriptas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        rbNoInscriptas.setForeground(new java.awt.Color(0, 0, 153));
         rbNoInscriptas.setSelected(true);
         rbNoInscriptas.setText("No Inscriptas");
         rbNoInscriptas.addActionListener(new java.awt.event.ActionListener() {
@@ -124,65 +165,13 @@ public ViewFormularioInscripcion() {
                 rbNoInscriptasActionPerformed(evt);
             }
         });
+        getContentPane().add(rbNoInscriptas);
+        rbNoInscriptas.setBounds(410, 220, 100, 23);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(btInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(btAnular)
-                        .addGap(57, 57, 57)
-                        .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(rbInscriptas)
-                        .addGap(112, 112, 112)
-                        .addComponent(rbNoInscriptas))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cbAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbInscriptas)
-                    .addComponent(rbNoInscriptas))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btInscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAnular, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_form_institucion.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(-20, 0, 770, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -220,6 +209,7 @@ public ViewFormularioInscripcion() {
             int id_materia=(Integer)modelo.getValueAt(filaSeleccionada,0);
             String nombre=(String)modelo.getValueAt(filaSeleccionada,1);
             int anio=(Integer)modelo.getValueAt(filaSeleccionada, 2);
+            
             Materia m=new Materia(id_materia,nombre,anio,true);
             
             Inscripcion c=new Inscripcion(a,m,0);
@@ -331,6 +321,7 @@ public ViewFormularioInscripcion() {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rbInscriptas;
     private javax.swing.JRadioButton rbNoInscriptas;

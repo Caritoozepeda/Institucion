@@ -76,7 +76,7 @@ public class ViewListadoDeAlumnos extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("LISTADO DE ALUMNOS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(170, 60, 276, 29);
+        jLabel1.setBounds(180, 60, 276, 29);
 
         rbActivos.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         rbActivos.setForeground(new java.awt.Color(0, 0, 153));
@@ -87,7 +87,7 @@ public class ViewListadoDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbActivos);
-        rbActivos.setBounds(400, 170, 73, 21);
+        rbActivos.setBounds(460, 180, 73, 21);
 
         rbNoActivos.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         rbNoActivos.setForeground(new java.awt.Color(0, 0, 153));
@@ -98,7 +98,7 @@ public class ViewListadoDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbNoActivos);
-        rbNoActivos.setBounds(110, 170, 91, 21);
+        rbNoActivos.setBounds(170, 180, 91, 21);
 
         jScrollPane1.setBackground(new java.awt.Color(102, 102, 255));
 
@@ -131,7 +131,7 @@ public class ViewListadoDeAlumnos extends javax.swing.JInternalFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 240, 540, 160);
+        jScrollPane1.setBounds(70, 240, 540, 160);
 
         btSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btSalir.setText("SALIR");
@@ -141,7 +141,7 @@ public class ViewListadoDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btSalir);
-        btSalir.setBounds(430, 430, 77, 32);
+        btSalir.setBounds(460, 430, 77, 32);
 
         btAlta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btAlta.setText("DAR DE ALTA");
@@ -152,7 +152,7 @@ public class ViewListadoDeAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btAlta);
-        btAlta.setBounds(80, 430, 189, 32);
+        btAlta.setBounds(110, 430, 189, 32);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_form_institucion.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");

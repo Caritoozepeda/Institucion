@@ -79,7 +79,23 @@ public class AlumnoData {
 
             JOptionPane.showMessageDialog(null, " No se pudo elimiar el alumno");
         }
+        
 
+    }
+    public boolean alumnoExiste(int id) {
+        boolean ret = false;        
+        try {
+            sql = "SELECT * FROM alumno WHERE id_alumno = ?";
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                ret = true;
+             }
+            } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Error al buscar el alumno, no existe");
+                    }
+        return ret;
     }
 // ok
     public void modificarAlumno(int id,Alumno alumno) {
@@ -131,7 +147,7 @@ public class AlumnoData {
 
     }
  // ok
-    public List<Alumno> listarAlumnos() {
+    public List<Alumno> listarAlumnosActivos() {
 
         List<Alumno> alumnos = new ArrayList<>();
         try {
@@ -156,6 +172,35 @@ public class AlumnoData {
         }
         return alumnos;
     }
+    
+    public List<Alumno> listarAlumnosInactivos() {
+
+        List<Alumno> alumnos = new ArrayList<>();
+        try {
+            sql = "SELECT * FROM alumno WHERE activo= 0  ORDER BY id_alumno ASC";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Alumno alumno = new Alumno();
+
+                alumno.setId_alumno(rs.getInt(1));
+                alumno.setApellido(rs.getString(2));
+                alumno.setNombre(rs.getString(3));
+                alumno.setFechaNac(rs.getDate(4).toLocalDate());
+                alumno.setActivo(rs.getBoolean(5));
+                alumnos.add(alumno);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+        }
+        return alumnos;
+    }
+    
+    
+    
  // ok
     public void activarAlumno(int id) {
         sql = "UPDATE alumno SET activo =1 WHERE id_alumno=?";

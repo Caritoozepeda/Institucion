@@ -142,7 +142,7 @@ public class MateriaData {
 
     }
  // ok
-    public List<Materia> listarMaterias() {
+    public List<Materia> listarMateriasActivas() {
 
         List<Materia> materias = new ArrayList<>();
         try {
@@ -166,6 +166,32 @@ public class MateriaData {
         }
         return materias;
     }
+    
+    public List<Materia> listarMateriasInactivas() {
+
+        List<Materia> materias = new ArrayList<>();
+        try {
+            sql = "SELECT * FROM materia WHERE activo= 0 ORDER BY id_materia ASC";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Materia materia = new Materia();
+
+                materia.setId_materia(rs.getInt(1));
+                materia.setNombre(rs.getString(2));
+                materia.setAnio(rs.getInt(3));
+                materia.setActivo(rs.getBoolean(4));
+                materias.add(materia);
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+        }
+        return materias;
+    }
+    
 //ok
     public void activarMateria(int id) {
         sql = "UPDATE materia SET activo =1 WHERE id_materia=?";

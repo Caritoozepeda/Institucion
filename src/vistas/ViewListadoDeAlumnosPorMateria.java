@@ -8,13 +8,17 @@ package vistas;
 import controlador.AlumnoData;
 import controlador.InscripcionData;
 import controlador.MateriaData;
+import java.text.DateFormat;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.table.DefaultTableModel;
 import modelo.Alumno;
 import modelo.Conexion;
 import modelo.Inscripcion;
 import modelo.Materia;
+
 
 
 public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
@@ -31,16 +35,17 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     
     public ViewListadoDeAlumnosPorMateria() {
         initComponents();
+          this.setSize(700, 550);
         
         conexion =new Conexion();
         
          md = new MateriaData(conexion);
-       listaMaterias =(ArrayList<Materia>)md.listarMaterias();
+       listaMaterias =(ArrayList<Materia>)md.listarMateriasActivas();
         
           cargarMaterias();
         
         ad= new AlumnoData(conexion);
-        listAlumnos= (ArrayList<Alumno>) ad.listarAlumnos();
+        listAlumnos= (ArrayList<Alumno>) ad.listarAlumnosActivos();
         
       
         modelo1= new DefaultTableModel();
@@ -64,6 +69,7 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jOptionPane1 = new javax.swing.JOptionPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbMateria = new javax.swing.JComboBox<>();
@@ -72,17 +78,31 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         btBuscar = new javax.swing.JButton();
         btSalir = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
+        getContentPane().setLayout(null);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 153));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("LISTADO DE ALUMNOS POR MATERIA");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(60, 30, 480, 29);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("MATERIA");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(55, 126, 120, 22);
 
+        getContentPane().add(cbMateria);
+        cbMateria.setBounds(190, 130, 188, 20);
+
+        tAlumnos.setBackground(new java.awt.Color(204, 204, 255));
+        tAlumnos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 153)));
+        tAlumnos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         tAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -96,77 +116,46 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tAlumnos);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("LISTADO DE ALUMNOS");
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 260, 530, 140);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("LISTADO DE ALUMNOS");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(190, 210, 245, 17);
+
+        btBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btBuscar.setText("BUSCAR");
         btBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btBuscarActionPerformed(evt);
             }
         });
+        getContentPane().add(btBuscar);
+        btBuscar.setBounds(457, 120, 89, 32);
 
+        btSalir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btSalir.setText("SALIR");
         btSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(btSalir);
+        btSalir.setBounds(470, 420, 88, 38);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(cbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
-                                .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(11, 11, 11)))
-                .addGap(40, 40, 40))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cbMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(jLabel3)
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_form_institucion.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(-7, 0, 740, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBuscarActionPerformed
         // TODO add your handling code here:
-        cargaDatosInscriptos();
+        cargaDatosMaterias();
     }//GEN-LAST:event_btBuscarActionPerformed
 
     private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
@@ -191,13 +180,15 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         columnas.add("ID");
         columnas.add("Apellido");
         columnas.add("Nombre");
-         columnas.add("Fecha de Nac");
+        columnas.add("Fecha de Nac");
          
         for(Object it:columnas){
         
             modelo1.addColumn(it);
         }
         tAlumnos.setModel(modelo1);
+        
+   
   }
      
      private void borraFilasTabla(){
@@ -210,7 +201,7 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
            }
 }
 
-      private void cargaDatosInscriptos(){
+      private void cargaDatosMaterias(){
     
         borraFilasTabla();
            //Llenar filas con las materias en las que esta incripto un alumno
@@ -219,12 +210,17 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
         
         ArrayList<Alumno> lista = (ArrayList)id.listarAlumnosPorMateria(seleccionado.getId_materia());
         
+                     
+           
         for(Alumno a:lista){
-        
+       
+          
+            
             modelo1.addRow(new Object[]{a.getId_alumno(),a.getApellido(),a.getNombre() ,a.getFechaNac()});
+            
         }
     }
-     
+           
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBuscar;
@@ -234,6 +230,8 @@ public class ViewListadoDeAlumnosPorMateria extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tAlumnos;
     // End of variables declaration//GEN-END:variables

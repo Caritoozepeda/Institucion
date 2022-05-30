@@ -37,7 +37,7 @@ public class InscripcionData {
 
 
     public InscripcionData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 // ok 1 ***
     public List<Materia> listarMateriasPorAlumno(int id_alumno) {
@@ -201,7 +201,7 @@ public class InscripcionData {
 
                 m = buscarMateria(rs.getInt("id_materia"));
                 ins.setMateria(m);
-                ins.setNota(rs.getInt("nota"));
+                ins.setNota(rs.getDouble("nota"));
 
                 inscripciones.add(ins);
             }
@@ -272,6 +272,23 @@ public class InscripcionData {
         return materias;
     }
 
+    
+    
+    public Alumno buscarAlumno(int id){
+    
+        AlumnoData ad=new AlumnoData(conexion);
+        return ad.buscarAlumno(id);
+    }
+
+    public Materia buscarMateria(int id) {
+
+        MateriaData md = new MateriaData(conexion);
+        return md.buscarMateria(id);
+
+    }
+    
+    
+    
     //OK    9 ******
     public List<Inscripcion> listarInscripciones() {
         List<Inscripcion> inscripciones = new ArrayList<>();
@@ -292,7 +309,7 @@ public class InscripcionData {
 
                 Materia m = buscarMateria(rs.getInt("id_materia"));
                 inscrip.setMateria(m);
-                inscrip.setNota(rs.getInt("nota"));
+                inscrip.setNota(rs.getDouble("nota"));
 
                 inscripciones.add(inscrip);
             }
@@ -304,19 +321,9 @@ public class InscripcionData {
         return inscripciones;
 
     }
+
     
-     public Alumno buscarAlumno(int id){
-    
-        AlumnoData ad=new AlumnoData(conexion);
-        return ad.buscarAlumno(id);
-    }
-
-    public Materia buscarMateria(int id) {
-
-        MateriaData md = new MateriaData(conexion);
-        return md.buscarMateria(id);
-
-    }
+     
     //ok nuevo 10 yo
 
     public List<Inscripcion> alumnosDesaprobados() {
@@ -339,7 +346,7 @@ public class InscripcionData {
 
                 Materia m = buscarMateria(rs.getInt("id_materia"));
                 inscrip.setMateria(m);
-                inscrip.setNota(rs.getInt("nota"));
+                inscrip.setNota(rs.getDouble("nota"));
                  
                 inscrip.setAlumno(a);
                 inscrip.setMateria(m);
@@ -358,25 +365,23 @@ public class InscripcionData {
         List<Inscripcion> inscripciones = new ArrayList<>();
         Inscripcion inscrip;
  try {
-        sql = " SELECT alumno.id_alumno, alumno.apellido, alumno.nombre, materia.id_materia, materia.nombre, materia.año, inscripcion.nota FROM alumno, inscripcion, materia WHERE alumno.id_alumno = inscripcion.id_alumno and materia.id_materia = inscripcion.id_materia AND inscripcion.nota > 6 ORDER BY inscripcion.nota DESC, materia.nombre ASC ";
-
+//       
+   sql=  "SELECT * FROM inscripcion WHERE inscripcion.nota > 6 ORDER BY inscripcion.nota DESC" ;
        
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                inscrip = new Inscripcion();
-                            
-                Alumno a = buscarAlumno(rs.getInt("id_alumno"));
-                a.setApellido(rs.getString("apellido"));
-                a.setNombre(rs.getString("nombre"));
+              inscrip = new Inscripcion();
+                inscrip.setId_inscripcion(rs.getInt("id_inscripcion"));
 
-                
+                Alumno a = buscarAlumno(rs.getInt("id_alumno"));
+                inscrip.setAlumno(a);
+
                 Materia m = buscarMateria(rs.getInt("id_materia"));
-              
-                
+                inscrip.setMateria(m);
                 inscrip.setNota(rs.getDouble("nota"));
-                
+                 
                 inscrip.setAlumno(a);
                 inscrip.setMateria(m);
 
@@ -410,7 +415,7 @@ public class InscripcionData {
 
                 Materia m = buscarMateria(rs.getInt("id_materia"));
                 inscrip.setMateria(m);
-                inscrip.setNota(rs.getInt("nota"));
+                inscrip.setNota(rs.getDouble("nota"));
 
                 inscripciones.add(inscrip);
             }

@@ -22,6 +22,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
      */
     public ViewMaterias() {
         initComponents();
+        this.setSize(700, 550);
         conexion = new Conexion();
         materiaData = new MateriaData(conexion);
     }
@@ -49,26 +50,43 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jbLimpiar = new javax.swing.JButton();
         jtfAño = new javax.swing.JTextField();
         jbSalir = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 102, 51));
+        getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setText("Materias");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("MATERIAS");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(310, 30, 140, 48);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        jLabel2.setText("Código:");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("CODIGO");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(115, 135, 76, 22);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        jLabel3.setText("Nombre:");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("NOMBRE");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(111, 208, 80, 22);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        jLabel4.setText("Año:");
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("AÑO");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(151, 282, 40, 22);
 
         jtfCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtfCodigoKeyTyped(evt);
             }
         });
+        getContentPane().add(jtfCodigo);
+        jtfCodigo.setBounds(263, 139, 75, 30);
 
         jtfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -80,48 +98,65 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
                 jtfNombreKeyTyped(evt);
             }
         });
+        getContentPane().add(jtfNombre);
+        jtfNombre.setBounds(263, 202, 290, 30);
 
-        jbBusccar.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jbBusccar.setText("Buscar");
+        jbBusccar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbBusccar.setText("BUSCAR");
         jbBusccar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBusccarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbBusccar);
+        jbBusccar.setBounds(446, 137, 90, 30);
 
-        jCheckBoxEstado.setText("Estado");
+        jCheckBoxEstado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jCheckBoxEstado.setForeground(new java.awt.Color(0, 0, 153));
+        jCheckBoxEstado.setText("ESTADO");
+        getContentPane().add(jCheckBoxEstado);
+        jCheckBoxEstado.setBounds(440, 285, 69, 23);
 
-        jbGuardar.setForeground(new java.awt.Color(0, 102, 204));
-        jbGuardar.setText("Guardar");
+        jbGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbGuardar.setText("GUARDAR");
         jbGuardar.setEnabled(false);
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbGuardar);
+        jbGuardar.setBounds(110, 390, 105, 34);
 
-        jbBorrar.setForeground(new java.awt.Color(255, 0, 0));
-        jbBorrar.setText("Borrar");
+        jbBorrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbBorrar.setText("BORRAR");
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBorrarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbBorrar);
+        jbBorrar.setBounds(370, 450, 110, 34);
 
-        jbActualizar.setForeground(new java.awt.Color(0, 153, 0));
-        jbActualizar.setText("Actualizar");
+        jbActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbActualizar.setText("ACTUALIZAR");
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbActualizarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbActualizar);
+        jbActualizar.setBounds(370, 390, 111, 34);
 
-        jbLimpiar.setText("Limpiar");
+        jbLimpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbLimpiar.setText("LIMPIAR");
         jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbLimpiarActionPerformed(evt);
             }
         });
+        getContentPane().add(jbLimpiar);
+        jbLimpiar.setBounds(110, 450, 110, 34);
 
         jtfAño.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -133,85 +168,25 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
                 jtfAñoKeyTyped(evt);
             }
         });
+        getContentPane().add(jtfAño);
+        jtfAño.setBounds(263, 276, 64, 30);
 
-        jbSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jbSalir.setForeground(new java.awt.Color(255, 51, 51));
+        jbSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbSalir.setText("SALIR");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(jbSalir);
+        jbSalir.setBounds(580, 420, 101, 40);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(49, 362, 702, 10);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(185, 185, 185))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(164, 164, 164)
-                                .addComponent(jbBusccar))
-                            .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jbBorrar)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jbActualizar))
-                                    .addComponent(jCheckBoxEstado)
-                                    .addComponent(jbSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addComponent(jbGuardar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jbLimpiar)
-                .addGap(31, 31, 31))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jbBusccar)))
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(jtfAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jCheckBoxEstado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbBorrar)
-                    .addComponent(jbActualizar)
-                    .addComponent(jbLimpiar))
-                .addGap(35, 35, 35)
-                .addComponent(jbSalir)
-                .addGap(38, 38, 38))
-        );
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_form_institucion.jpg"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(-10, -10, 870, 550);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -330,6 +305,8 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbBusccar;

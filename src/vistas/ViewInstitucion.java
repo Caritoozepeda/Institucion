@@ -24,7 +24,7 @@ public class ViewInstitucion extends javax.swing.JFrame {
     public ViewInstitucion() {
         initComponents();
      
-        this.setSize(700, 700);
+        this.setSize(700, 600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
     }
@@ -38,7 +38,12 @@ public class ViewInstitucion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jLabel8 = new javax.swing.JLabel();
         escritorio = new javax.swing.JDesktopPane();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiSalir = new javax.swing.JMenuItem();
@@ -53,22 +58,49 @@ public class ViewInstitucion extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jmiListadoDeAlumnosporMateria = new javax.swing.JMenuItem();
         jmConsultasNotasAlumnos = new javax.swing.JMenuItem();
+        jlistadoDeMateriasPorAlumnos = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        listarMaterias = new javax.swing.JMenuItem();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        jRadioButtonMenuItem1.setSelected(true);
+        jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1.png"))); // NOI18N
+        jLabel8.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
-        escritorio.setLayout(escritorioLayout);
-        escritorioLayout.setHorizontalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
-        );
-        escritorioLayout.setVerticalGroup(
-            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        escritorio.add(jLabel2);
+        jLabel2.setBounds(420, 310, 220, 180);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_form_institucion.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        escritorio.add(jLabel1);
+        jLabel1.setBounds(-20, 0, 790, 610);
+
+        getContentPane().add(escritorio);
+        escritorio.setBounds(0, 0, 760, 590);
+
+        jMenu1.setBackground(new java.awt.Color(0, 0, 0));
+        jMenu1.setForeground(new java.awt.Color(0, 0, 153));
         jMenu1.setText("Archivo");
 
+        jmiSalir.setBackground(new java.awt.Color(255, 255, 255));
+        jmiSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jmiSalir.setText("Salir");
         jmiSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,8 +111,10 @@ public class ViewInstitucion extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu3.setForeground(new java.awt.Color(0, 0, 153));
         jMenu3.setText("Materias");
 
+        jmiFormularioDeMaterias.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jmiFormularioDeMaterias.setText("Formulario de materias");
         jmiFormularioDeMaterias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,8 +125,10 @@ public class ViewInstitucion extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu2.setForeground(new java.awt.Color(0, 0, 153));
         jMenu2.setText("Alumnos");
 
+        jmiFormularioDeAlumnos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jmiFormularioDeAlumnos.setText("Formulario de alumnos");
         jmiFormularioDeAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,8 +139,10 @@ public class ViewInstitucion extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu4.setForeground(new java.awt.Color(0, 0, 153));
         jMenu4.setText("Inscripciones");
 
+        jmiManejoDeInscripciones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jmiManejoDeInscripciones.setText("Manejo de inscripciones");
         jmiManejoDeInscripciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,8 +153,10 @@ public class ViewInstitucion extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setForeground(new java.awt.Color(0, 0, 153));
         jMenu5.setText("Carga De Notas");
 
+        jmiManipulacionDeNotas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jmiManipulacionDeNotas.setText("Manipulación de notas");
         jmiManipulacionDeNotas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,8 +167,10 @@ public class ViewInstitucion extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu6.setForeground(new java.awt.Color(0, 0, 153));
         jMenu6.setText("Consultas");
 
+        jmiListadoDeAlumnosporMateria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jmiListadoDeAlumnosporMateria.setText("Listado de Alumnos por Materia");
         jmiListadoDeAlumnosporMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +179,7 @@ public class ViewInstitucion extends javax.swing.JFrame {
         });
         jMenu6.add(jmiListadoDeAlumnosporMateria);
 
+        jmConsultasNotasAlumnos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jmConsultasNotasAlumnos.setText("Notas de Alumnos");
         jmConsultasNotasAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,20 +188,36 @@ public class ViewInstitucion extends javax.swing.JFrame {
         });
         jMenu6.add(jmConsultasNotasAlumnos);
 
+        jlistadoDeMateriasPorAlumnos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlistadoDeMateriasPorAlumnos.setText("Listado de Materias por Alumnos");
+        jlistadoDeMateriasPorAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jlistadoDeMateriasPorAlumnosActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jlistadoDeMateriasPorAlumnos);
+
+        jMenuItem2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jMenuItem2.setText("Listado de Alumnos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem2);
+
+        listarMaterias.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        listarMaterias.setText("Listado de Materias");
+        listarMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarMateriasActionPerformed(evt);
+            }
+        });
+        jMenu6.add(listarMaterias);
+
         jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(escritorio)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -233,6 +292,47 @@ public class ViewInstitucion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jmConsultasNotasAlumnosActionPerformed
 
+    private void jlistadoDeMateriasPorAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jlistadoDeMateriasPorAlumnosActionPerformed
+        // TODO add your handling code here:
+        
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewListadoDeMateriasPorAlumno lm= new  ViewListadoDeMateriasPorAlumno();
+        lm.setVisible(true);
+        escritorio.add(lm);
+        escritorio.moveToFront(lm);
+        
+        
+        
+        
+    }//GEN-LAST:event_jlistadoDeMateriasPorAlumnosActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+       ViewListadoDeAlumnos la= new  ViewListadoDeAlumnos();
+        la.setVisible(true);
+        escritorio.add(la);
+        escritorio.moveToFront(la);
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void listarMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarMateriasActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+       ViewListadoDeMaterias lnm= new  ViewListadoDeMaterias();
+        lnm.setVisible(true);
+        escritorio.add(lnm);
+        escritorio.moveToFront(lnm);
+        
+        
+        
+    }//GEN-LAST:event_listarMateriasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -271,6 +371,10 @@ public class ViewInstitucion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -278,6 +382,9 @@ public class ViewInstitucion extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
+    private javax.swing.JMenuItem jlistadoDeMateriasPorAlumnos;
     private javax.swing.JMenuItem jmConsultasNotasAlumnos;
     private javax.swing.JMenuItem jmiFormularioDeAlumnos;
     private javax.swing.JMenuItem jmiFormularioDeMaterias;
@@ -285,5 +392,6 @@ public class ViewInstitucion extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiManejoDeInscripciones;
     private javax.swing.JMenuItem jmiManipulacionDeNotas;
     private javax.swing.JMenuItem jmiSalir;
+    private javax.swing.JMenuItem listarMaterias;
     // End of variables declaration//GEN-END:variables
 }
