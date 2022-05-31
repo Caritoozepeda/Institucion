@@ -91,7 +91,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbGuardar1);
-        jbGuardar1.setBounds(40, 90, 130, 23);
+        jbGuardar1.setBounds(40, 90, 130, 24);
 
         jbGuardar2.setBackground(new java.awt.Color(255, 255, 255));
         jbGuardar2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -102,7 +102,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbGuardar2);
-        jbGuardar2.setBounds(219, 90, 140, 23);
+        jbGuardar2.setBounds(219, 90, 140, 24);
 
         jLabel3.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,7 +121,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(aID);
-        aID.setBounds(219, 142, 70, 20);
+        aID.setBounds(219, 142, 70, 19);
 
         jbBuscar.setBackground(new java.awt.Color(255, 255, 255));
         jbBuscar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -132,7 +132,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbBuscar);
-        jbBuscar.setBounds(353, 141, 90, 23);
+        jbBuscar.setBounds(353, 141, 90, 24);
 
         jLabel2.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -151,7 +151,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(aApellido);
-        aApellido.setBounds(219, 184, 230, 20);
+        aApellido.setBounds(219, 184, 230, 19);
 
         jLabel4.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -165,7 +165,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(aNombre);
-        aNombre.setBounds(219, 240, 230, 20);
+        aNombre.setBounds(219, 240, 230, 19);
 
         jLabel5.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,7 +180,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(aDate);
-        aDate.setBounds(219, 298, 87, 20);
+        aDate.setBounds(219, 298, 84, 19);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1.png"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -211,7 +211,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbGuardar);
-        jbGuardar.setBounds(30, 450, 90, 23);
+        jbGuardar.setBounds(30, 450, 90, 24);
 
         jbBorrar.setBackground(new java.awt.Color(255, 255, 255));
         jbBorrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -222,7 +222,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbBorrar);
-        jbBorrar.setBounds(150, 450, 90, 23);
+        jbBorrar.setBounds(150, 450, 90, 24);
 
         jbActualizar.setBackground(new java.awt.Color(255, 255, 255));
         jbActualizar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -233,7 +233,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbActualizar);
-        jbActualizar.setBounds(280, 450, 100, 23);
+        jbActualizar.setBounds(280, 450, 100, 24);
 
         jbLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         jbLimpiar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -244,7 +244,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbLimpiar);
-        jbLimpiar.setBounds(400, 450, 90, 23);
+        jbLimpiar.setBounds(400, 450, 90, 24);
 
         jbLimpiar1.setBackground(new java.awt.Color(255, 255, 255));
         jbLimpiar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -255,7 +255,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbLimpiar1);
-        jbLimpiar1.setBounds(530, 450, 70, 23);
+        jbLimpiar1.setBounds(530, 450, 70, 24);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(40, 414, 173, 2);
 
@@ -290,17 +290,36 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
 
         botonesBuscar();
         activarOtros();
+        
+        
+        Integer id = Integer.parseInt(aID.getText());
 
-      int id = Integer.parseInt(aID.getText());
+        Alumno alumno = ad.buscarAlumno(id);
+
+        if (alumno != null) {
+            //Cambiar int a string
+            String legajo = String.valueOf(alumno.getId_alumno());
+            aID.setText(legajo);
+            aApellido.setText(alumno.getApellido());
+            aNombre.setText(alumno.getNombre());
+            //Hacer Localdate to Date
+            LocalDate lc = alumno.getFechaNac();
+            Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            aDate.setDate(date);
+
+        
+
+     /* int id = Integer.parseInt(aID.getText());
         Alumno a = ad.buscarAlumno(id);
 
-        if (a != null) {
+      if (a != null) {
             aID.setText(a.getId_alumno() + "");
             aNombre.setText(a.getNombre());
             aApellido.setText(a.getApellido());
-           /* aDate.setDate(Date.valueOf(a.getFechaNac()));*/
+             LocalDate lc = alumno.getFechaNac();
+            Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
             aEstado.setSelected(a.isActivo());
-
+*/
         } else {
             JOptionPane.showMessageDialog(null, "No se encontro el alumno");
         }
@@ -309,6 +328,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
         limpiar();
+        
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
@@ -358,6 +378,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
     private void jbGuardar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardar2ActionPerformed
         desactivarId();
         activarOtros();
+        //botonesGuardar();
 
         sinBotonesBuscar();
         jbBuscar.setEnabled(false);
@@ -406,6 +427,8 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
         if (!(minusculas || mayusculas || espacio)) {
             JOptionPane.showMessageDialog(this, "El dato NOMBRE  no debe ser numérico");
             evt.consume();
+        }else{
+            botonesGuardar();
         }
     }//GEN-LAST:event_aNombreKeyTyped
 
@@ -439,6 +462,7 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
         aDate.setDate(null);
         desactivarOtros();
         desactivarId();
+        botonesDesactivados();
 
     }
 
@@ -480,6 +504,9 @@ public class ViewAlumnos extends javax.swing.JInternalFrame {
     private void sinBotonesBuscar() {
         jbActualizar.setEnabled(false);
         jbBorrar.setEnabled(false);
+    }
+    private void botonesGuardar(){
+        jbGuardar.setEnabled(true);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aApellido;
