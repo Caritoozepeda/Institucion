@@ -15,8 +15,10 @@ import modelo.Materia;
  * @author salva
  */
 public class ViewMaterias extends javax.swing.JInternalFrame {
+
     private MateriaData materiaData;
     private Conexion conexion;
+
     /**
      * Creates new form ViewMaterias
      */
@@ -36,6 +38,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -51,12 +54,15 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jtfAño = new javax.swing.JTextField();
         jbSalir = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        BtAgregar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+
+        jTextField1.setText("jTextField1");
 
         setBackground(new java.awt.Color(0, 102, 51));
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 26)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MATERIAS");
         getContentPane().add(jLabel1);
@@ -78,8 +84,13 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("AÑO");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(151, 282, 40, 22);
+        jLabel4.setBounds(150, 270, 40, 22);
 
+        jtfCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfCodigoFocusLost(evt);
+            }
+        });
         jtfCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtfCodigoKeyTyped(evt);
@@ -88,6 +99,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         getContentPane().add(jtfCodigo);
         jtfCodigo.setBounds(263, 139, 75, 30);
 
+        jtfNombre.setEnabled(false);
         jtfNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfNombreFocusLost(evt);
@@ -111,11 +123,12 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         getContentPane().add(jbBusccar);
         jbBusccar.setBounds(446, 137, 90, 30);
 
-        jCheckBoxEstado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jCheckBoxEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jCheckBoxEstado.setForeground(new java.awt.Color(0, 0, 153));
         jCheckBoxEstado.setText("ESTADO");
+        jCheckBoxEstado.setEnabled(false);
         getContentPane().add(jCheckBoxEstado);
-        jCheckBoxEstado.setBounds(440, 285, 72, 24);
+        jCheckBoxEstado.setBounds(420, 270, 83, 25);
 
         jbGuardar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbGuardar.setText("GUARDAR");
@@ -126,27 +139,29 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbGuardar);
-        jbGuardar.setBounds(110, 390, 105, 34);
+        jbGuardar.setBounds(110, 390, 130, 34);
 
         jbBorrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbBorrar.setText("BORRAR");
+        jbBorrar.setEnabled(false);
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBorrarActionPerformed(evt);
             }
         });
         getContentPane().add(jbBorrar);
-        jbBorrar.setBounds(370, 450, 110, 34);
+        jbBorrar.setBounds(330, 450, 140, 34);
 
         jbActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbActualizar.setText("ACTUALIZAR");
+        jbActualizar.setEnabled(false);
         jbActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbActualizarActionPerformed(evt);
             }
         });
         getContentPane().add(jbActualizar);
-        jbActualizar.setBounds(370, 390, 108, 34);
+        jbActualizar.setBounds(330, 390, 140, 34);
 
         jbLimpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbLimpiar.setText("LIMPIAR");
@@ -156,8 +171,9 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbLimpiar);
-        jbLimpiar.setBounds(110, 450, 110, 34);
+        jbLimpiar.setBounds(110, 450, 140, 34);
 
+        jtfAño.setEnabled(false);
         jtfAño.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtfAñoFocusLost(evt);
@@ -169,7 +185,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jtfAño);
-        jtfAño.setBounds(263, 276, 64, 30);
+        jtfAño.setBounds(260, 260, 64, 30);
 
         jbSalir.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbSalir.setText("SALIR");
@@ -179,39 +195,84 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbSalir);
-        jbSalir.setBounds(580, 420, 101, 40);
+        jbSalir.setBounds(530, 420, 101, 40);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(49, 362, 702, 2);
+        jSeparator1.setBounds(80, 350, 520, 10);
+
+        BtAgregar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BtAgregar.setText("AGREGAR");
+        BtAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtAgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtAgregar);
+        BtAgregar.setBounds(70, 50, 100, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondo_form_institucion.jpg"))); // NOI18N
         jLabel5.setText("jLabel5");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(-10, -10, 870, 550);
+        jLabel5.setBounds(-20, 0, 820, 560);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBusccarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBusccarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: modificado
+
         Materia m = materiaData.buscarMateria(Integer.parseInt(jtfCodigo.getText()));
-        if(m != null){
-        jtfNombre.setText(m.getNombre());
-        jtfAño.setText(m.getAnio()+"");
-        jCheckBoxEstado.setAutoscrolls(m.isActivo());
-        jbGuardar.setEnabled(false);
-        jbBorrar.setEnabled(true);
-        jbActualizar.setEnabled(true);
+
+        int id = Integer.parseInt(jtfCodigo.getText());
+
+        if (jtfCodigo.getText() != null && materiaData.materiaExiste(id)) {
+
+            jtfNombre.setText(m.getNombre());
+            jtfAño.setText(m.getAnio() + "");
+            jCheckBoxEstado.setSelected(m.isActivo());// no se esta marcando//
+            // jCheckBoxEstado.setEnabled(false);
+
+            jbGuardar.setEnabled(false);
+            jtfNombre.setEnabled(true);
+            jtfAño.setEnabled(true);
+            jbBorrar.setEnabled(true);
+            jbActualizar.setEnabled(true);
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Materia no existente");
+            jCheckBoxEstado.setEnabled(false);///
+            jtfNombre.setEnabled(false);
+            jtfAño.setEnabled(false);
+            jbBorrar.setEnabled(false);
+            jbActualizar.setEnabled(false);
+            jbGuardar.setEnabled(false);
+
         }
+        if (jCheckBoxEstado.isSelected()) {//
+            jbBorrar.setEnabled(true);
+            jbActualizar.setEnabled(true);
+        }else{
+             jbBorrar.setEnabled(false);
+            jbActualizar.setEnabled(false);
+        }
+
     }//GEN-LAST:event_jbBusccarActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
-        
+
         String nombre = jtfNombre.getText();
         int anio = Integer.parseInt(jtfAño.getText());
+        //jCheckBoxEstado.setSelected(true);
         Materia m = new Materia(nombre, anio, jCheckBoxEstado.isSelected());
-        materiaData.agregarMateria(m);
-        jtfCodigo.setText(m.getId_materia()+"");
+        if (jCheckBoxEstado.isSelected()) {//
+            materiaData.agregarMateria(m);
+            jtfCodigo.setText(m.getId_materia() + "");
+        } else {
+            JOptionPane.showMessageDialog(this, " Esta agregando una con estado inactivo");//
+            jCheckBoxEstado.isFocusPainted();//
+        }
+        jCheckBoxEstado.setSelected(true);//
+
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
@@ -219,44 +280,54 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         jtfCodigo.setText("");
         jtfNombre.setText("");
         jtfAño.setText("");
-        jCheckBoxEstado.setSelected(false);
-        jbGuardar.setEnabled(true);
-        jbBorrar.setEnabled(true);
-        jbActualizar.setEnabled(true);
+        jtfCodigo.setEnabled(true);//
+        jCheckBoxEstado.setSelected(false);//
+        jCheckBoxEstado.setEnabled(false);//
+        jtfNombre.setEnabled(false);//
+        jtfAño.setEnabled(false);//
+
+        jbGuardar.setEnabled(false);
+        jbBorrar.setEnabled(false);
+        jbActualizar.setEnabled(false);
     }//GEN-LAST:event_jbLimpiarActionPerformed
 
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here: modificado
+
         int id = Integer.parseInt(jtfCodigo.getText());
-        if(materiaData.materiaExiste(id)){
+
+        //if(jEstado.getText().contentEquals("true"))
+        if (jtfCodigo.getText() != null)//
+        {
             materiaData.eliminarMateria(id);
             jbGuardar.setEnabled(false);
             jbActualizar.setEnabled(false);
-        }else{
-            JOptionPane.showMessageDialog(this, "Materia no existente");
+        } else {
+            JOptionPane.showMessageDialog(this, " Debe ingresar un id ");//
         }
     }//GEN-LAST:event_jbBorrarActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-        // TODO add your handling code here:
-        if (jtfCodigo.getText() != null){
+        // TODO add your handling code here: modificado
+        if ((jtfCodigo.getText() != null)) {
             int id = Integer.parseInt(jtfCodigo.getText());
             String materia = jtfNombre.getText();
             int anio = Integer.parseInt(jtfAño.getText());
-            boolean activo = jCheckBoxEstado.isSelected();
-            Materia m = new Materia(materia,anio,activo);
+          
+            jCheckBoxEstado.setEnabled(false);
+            jCheckBoxEstado.setSelected(true);
+            Materia m = new Materia(materia, anio, true);
             materiaData.modificarMateria(id, m);
             jbGuardar.setEnabled(false);
-        }else{
-            JOptionPane.showMessageDialog(this, "Materia ya actualizada");
+        } else {
+            JOptionPane.showMessageDialog(this, "La materia no se encuentra activa");
         }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
         // TODO add your handling code here:
 
-  
+
     }//GEN-LAST:event_jtfNombreKeyTyped
 
     private void jtfNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfNombreFocusLost
@@ -272,7 +343,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         if (jtfAño.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "El campo Año debe estar completo");
             jtfAño.requestFocus();
-        }else{
+        } else {
             jbGuardar.setEnabled(true);
         }
     }//GEN-LAST:event_jtfAñoFocusLost
@@ -282,9 +353,9 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
         if (!numeros) {
-            JOptionPane.showMessageDialog(this,"El Codigo debe ser numérico");
+            JOptionPane.showMessageDialog(this, "El Codigo debe ser numérico");
             evt.consume();
-        }        
+        }
     }//GEN-LAST:event_jtfCodigoKeyTyped
 
     private void jtfAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAñoKeyTyped
@@ -292,9 +363,9 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
         if (!numeros) {
-            JOptionPane.showMessageDialog(this,"El Año debe ser numérico");
+            JOptionPane.showMessageDialog(this, "El Año debe ser numérico");
             evt.consume();
-        }    
+        }
     }//GEN-LAST:event_jtfAñoKeyTyped
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -302,8 +373,28 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jtfCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfCodigoFocusLost
+        // TODO add your handling code here:///
+        if (jtfCodigo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Para buscar debe ingresar un ID");
+            requestFocus();
+            jbBusccar.setEnabled(false);
+        }
+        jbBusccar.setEnabled(true);
+    }//GEN-LAST:event_jtfCodigoFocusLost
+
+    private void BtAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAgregarActionPerformed
+        // TODO add your handling code here:
+        jbBusccar.setEnabled(false);
+        jtfCodigo.setEnabled(false);
+        jtfNombre.setEnabled(true);
+        jtfAño.setEnabled(true);
+        jCheckBoxEstado.setEnabled(true);
+    }//GEN-LAST:event_BtAgregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtAgregar;
     private javax.swing.JCheckBox jCheckBoxEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -311,6 +402,7 @@ public class ViewMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbBusccar;

@@ -124,7 +124,7 @@ public class AlumnoData {
         Alumno alumno = null;
         try {
 
-            sql = "SELECT * FROM alumno WHERE id_alumno=? AND activo= 1";
+            sql = "SELECT * FROM alumno WHERE id_alumno = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id); 
 
